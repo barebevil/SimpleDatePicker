@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SimpleDatePicker</string>
+    <string name="date_picker_title">Pick a date</string>
+</resources>
