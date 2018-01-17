@@ -5,6 +5,8 @@ import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.app.DialogFragment;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.DatePicker;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,8 @@ import java.util.Date;
  */
 
 public class DatePickerFragment extends DialogFragment implements DatePickerDialog.OnDateSetListener {
+
+    DatePicker mDatePicker;
 
     /*
     Recommended method to pass a value from Fragment to Activity is use a callback to get a signal from
@@ -44,6 +48,10 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
+        View v = LayoutInflater.from(getActivity())
+                .inflate(R.layout.dialog_date, null);
+
+        mDatePicker = (DatePicker) v.findViewById(R.id.dialog_date_date_picker);
         Bundle bundle = getArguments();
         String dobVal2 = bundle.getString("DOB","");
         System.out.println(dobVal2);
@@ -64,6 +72,8 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         System.out.println(year + " " + month + " " + day);
+
+        mDatePicker.init(year, month, day, null);
 
         // Create a new instance of DatePickerDialog and return it
         return new DatePickerDialog(getActivity(), this, year, month, day);

@@ -19,6 +19,9 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
         // After the dialog fragment completes, it calls this callback.
         // use the string here
         displayDate.setText(selectedDate);
+
+        //update original DOB value
+        dobVal = selectedDate;
     }
 
     @Override
