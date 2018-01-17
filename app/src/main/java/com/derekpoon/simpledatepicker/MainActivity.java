@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.util.Date;
+
 //be sure to implement the interface in the activity
 
 public class MainActivity extends AppCompatActivity implements DatePickerFragment.OnCompleteListener {
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerFragmen
     View.OnClickListener btnHandler = new View.OnClickListener() {
         public void onClick(View v) {
             DialogFragment picker = new DatePickerFragment();
-
             Bundle bundle = new Bundle();
             bundle.putString("DOB", dobVal);
             picker.setArguments(bundle);

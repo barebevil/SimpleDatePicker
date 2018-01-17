@@ -1,6 +1,7 @@
 package com.derekpoon.simpledatepicker;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
@@ -48,10 +49,6 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        View v = LayoutInflater.from(getActivity())
-                .inflate(R.layout.dialog_date, null);
-
-        mDatePicker = (DatePicker) v.findViewById(R.id.dialog_date_date_picker);
         Bundle bundle = getArguments();
         String dobVal2 = bundle.getString("DOB","");
         System.out.println(dobVal2);
@@ -67,16 +64,25 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         }
 
         Calendar cal = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
         cal.setTime(date);
         int year = cal.get(Calendar.YEAR);
         int month = cal.get(Calendar.MONTH);
         int day = cal.get(Calendar.DAY_OF_MONTH);
         System.out.println(year + " " + month + " " + day);
 
-        mDatePicker.init(year, month, day, null);
+        // Create a new instance of DatePickerDialog and return it
+        DatePickerDialog dp = new DatePickerDialog(getActivity(),
+                this, year, month, day);
+//        DatePickerDialog dp = new DatePickerDialog(getActivity(),
+//                AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,this,year,month,day);
+
+        //set a max date to today so future dates cannot be selected
+        dp.getDatePicker().setMaxDate(today.getTimeInMillis());
 
         // Create a new instance of DatePickerDialog and return it
-        return new DatePickerDialog(getActivity(), this, year, month, day);
+//        return new DatePickerDialog(getActivity(), this, year, month, day);
+        return dp;
     }
 
     @Override
