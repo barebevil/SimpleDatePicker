@@ -1,13 +1,10 @@
 package com.derekpoon.simpledatepicker;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.app.DialogFragment;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.DatePicker;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,6 +71,7 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         // Create a new instance of DatePickerDialog and return it
         DatePickerDialog dp = new DatePickerDialog(getActivity(),
                 this, year, month, day);
+//        dp.setTitle("Pick a date: ");
 //        DatePickerDialog dp = new DatePickerDialog(getActivity(),
 //                AlertDialog.THEME_DEVICE_DEFAULT_LIGHT,this,year,month,day);
 
